@@ -11,7 +11,7 @@ def hello(event, context):
     s3 = boto3.client('s3',
         endpoint_url='http://localhost:4566',
         region_name="us-east-1")
-    bucket_name = 'test-omega-rom'
+    bucket_name = 'test-bucket'
     file_name = event['pathParameters']['filename']
 
     s3_response_object = s3.get_object(Bucket=bucket_name, Key=file_name)
