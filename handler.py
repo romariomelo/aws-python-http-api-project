@@ -12,7 +12,7 @@ def hello(event, context):
         endpoint_url='http://localhost:4566',
         region_name="us-east-1")
     bucket_name = 'test-bucket'
-    file_name = event['pathParameters']['filename']
+    file_name = 'votos/' + event['pathParameters']['filename']
 
     s3_response_object = s3.get_object(Bucket=bucket_name, Key=file_name)
     object_content = s3_response_object['Body'].read()
