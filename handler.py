@@ -2,7 +2,6 @@ import json
 import boto3
 import os
 from io import BytesIO
-import PyPDF2
 import spacy
 from tika import parser
 

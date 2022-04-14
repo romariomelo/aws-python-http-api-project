@@ -56,7 +56,27 @@ serverless plugin install -n serverless-offline
 
 ## Python
 
-- TODO : Instalar Python
+- Instalação venv
+
+```bash
+sudo apt-get install python3.8-venv
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+- Instalar com pip
+
+```bash
+pip install boto3
+pip install spacy
+pip install tika
+```
+
+Instalar `pt_core_news_sm`
+
+```bash
+python -m spacy download pt_core_news_sm
+```
 
 ## Iniciar serviço
 
