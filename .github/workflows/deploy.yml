@@ -78,6 +78,7 @@ jobs:
 
       - name: Install Serverless dependences
         run: |
+          npm i -g serverless
           serverless plugin install -n serverless-offline
           serverless plugin install -n serverless-python-requirements
 
