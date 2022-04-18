@@ -45,6 +45,10 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
+      - name: Install pt_core_news_sm
+        run: |
+          python -m spacy download pt_core_news_sm
+
       # --------- Use Node and NPM to install serverless-python-requirements ---------
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
@@ -71,6 +75,11 @@ jobs:
           cat > env.yml << EOF
           ${{ secrets.ENV }}
           EOF
+
+      - name: Install Serverless dependences
+        run: |
+          serverless plugin install -n serverless-offline
+          serverless plugin install -n serverless-python-requirements
 
       - name: Serverless Deploy
         uses: dhollerbach/github-action-serverless-with-python-requirements@master
