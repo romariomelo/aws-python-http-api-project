@@ -4,6 +4,8 @@ frameworkVersion: '3'
 plugins:
   - serverless-offline
 custom:
+  defaultStage: development
+  settings: ${file(env.yml):${self:provider.stage, self:custom.defaultStage}}
   localstack:
     debug: true
     stages:
@@ -14,11 +16,13 @@ custom:
 provider:
   name: aws
   runtime: python3.8
+  stage: ${opt:stage, self:custom.defaultStage}
+  environment: ${self:custom.settings}
 
 functions:
   hello:
     handler: handler.hello
     events:
       - httpApi:
-          path: /{filename}
-          method: get
+          path: /
+          method: post

@@ -16,6 +16,9 @@ var/
 .installed.cfg
 *.egg
 
+#envs
+env.yml
+
 # Node
 node_modules
 
