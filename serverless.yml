@@ -35,7 +35,7 @@ package:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: src/app.handler
     events:
       - httpApi:
           path: /

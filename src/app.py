@@ -1,11 +1,11 @@
 import json
 import boto3
 import os
-from extract_info import extract_info
-from cout_words import count_words_returns_dic
-from get_pdf import pdf_by_io, pdf_content_to_string
+from src.extract_info import extract_info
+from src.get_pdf import pdf_by_io, pdf_content_to_string
+from src.nltk_test import most_common
 
-def hello(event, context):
+def handler(event, context):
 
     body_request = json.loads(event['body'])
 
@@ -17,7 +17,7 @@ def hello(event, context):
     object_content = s3_response_object['Body'].read()
 
     pdf_file = pdf_by_io(object_content)
-    palavras = count_words_returns_dic(pdf_file)
+    palavras = most_common() 
     pdf = pdf_content_to_string(pdf_file)
 
     info = extract_info(pdf, palavras)
